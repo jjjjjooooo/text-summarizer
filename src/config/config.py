@@ -3,6 +3,7 @@ from src.utils.exception import CustomException
 from src.utils.logger import logger
 from src.utils.utils import load_yaml, create_directories, get_size
 from src.entity import DataIngestionConfig
+from src.entity import DataValidationConfig
 
 
 class ConfigurationManager:
@@ -25,3 +26,17 @@ class ConfigurationManager:
         )
 
         return data_ingestion_config
+
+    def get_data_validation_config(self) -> DataValidationConfig:
+        config = self.config["data_validation"]
+
+        create_directories([config["root_dir"]])
+
+        data_validation_config = DataValidationConfig(
+            root_dir=config["root_dir"],
+            STATUS_FILE=config["STATUS_FILE"],
+            ALL_REQUIRED_FILES=config["ALL_REQUIRED_FILES"],
+            UNZIPPED_FOLDER=config["UNZIPPED_FOLDER"],
+        )
+
+        return data_validation_config
