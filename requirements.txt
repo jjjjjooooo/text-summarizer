@@ -1,5 +1,10 @@
+--extra-index-url https://download.pytorch.org/whl/cu118
+torch
+torchvision
+torchaudio
 transformers
 transformers[sentencepiece]
+transformers[torch]
 datasets
 sacrebleu
 rouge_score
@@ -9,9 +14,9 @@ nltk
 tqdm
 pyyaml
 matplotlib
-torch
 notebook
 boto3
+wandb
 dill
 mypy-boto3-s3
 python-box==6.0.2

@@ -21,12 +21,15 @@ class DataTransformation:
         return {
             "input_ids": input_encodings["input_ids"],
             "attention_mask": input_encodings["attention_mask"],
-            "label": target_encodings["input_ids"],
+            "labels": target_encodings["input_ids"],
         }
 
     def convert(self):
-        dataset = load_from_disk(self.config.data_path)
-        dataset_transformed = dataset.map(self.convert_examples_to_features, batched=True)
-        logger.info("Dataset transformation done.")
-        dataset_transformed.save_to_disk(os.path.join(self.config.root_dir, "transformed_dataset"))
-        logger.info("Transformed dataset saved")
+        try:
+            dataset = load_from_disk(self.config.data_path)
+            dataset_transformed = dataset.map(self.convert_examples_to_features, batched=True)
+            logger.info("Dataset transformation done.")
+            dataset_transformed.save_to_disk(os.path.join(self.config.root_dir, "transformed_dataset"))
+            logger.info("Transformed dataset saved")
+        except Exception as e:
+            raise CustomException(e, sys)

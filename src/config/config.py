@@ -1,10 +1,11 @@
 from src.constants import *
 from src.utils.exception import CustomException
 from src.utils.logger import logger
-from src.utils.utils import load_yaml, create_directories, get_size
+from src.utils.utils import load_yaml, create_directories
 from src.entity import DataIngestionConfig
 from src.entity import DataValidationConfig
 from src.entity import DataTransformationConfig
+from src.entity import ModelTrainerConfig
 
 
 class ConfigurationManager:
@@ -56,3 +57,27 @@ class ConfigurationManager:
         )
 
         return data_transformation_config
+
+    def get_model_trainer_config(self) -> ModelTrainerConfig:
+        config = self.config["model_trainer"]
+        params = self.params["TrainingArguments"]
+
+        create_directories([config["root_dir"]])
+
+        model_trainer_config = ModelTrainerConfig(
+            root_dir=config["root_dir"],
+            data_path=config["data_path"],
+            model_ckpt=config["model_ckpt"],
+            num_train_epochs=params["num_train_epochs"],
+            warmup_steps=params["warmup_steps"],
+            per_device_train_batch_size=params["per_device_train_batch_size"],
+            per_device_eval_batch_size=params["per_device_eval_batch_size"],
+            weight_decay=params["weight_decay"],
+            logging_steps=params["logging_steps"],
+            evaluation_strategy=params["evaluation_strategy"],
+            eval_steps=params["eval_steps"],
+            save_steps=params["save_steps"],
+            gradient_accumulation_steps=params["gradient_accumulation_steps"],
+        )
+
+        return model_trainer_config

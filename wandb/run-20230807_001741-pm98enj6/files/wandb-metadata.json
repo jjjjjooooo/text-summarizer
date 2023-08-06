@@ -1,0 +1,49 @@
+{
+    "os": "Windows-10-10.0.19041-SP0",
+    "python": "3.8.0",
+    "heartbeatAt": "2023-08-06T22:17:42.273683",
+    "startedAt": "2023-08-06T22:17:41.506198",
+    "docker": null,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "<python with no main file>",
+    "git": {
+        "remote": "git@github.com:jjjjjooooo/TextSummarizer.git",
+        "commit": "7550c779ab9dc34a1194537a27ef691bf10a3331"
+    },
+    "email": "jinoujoe@gmail.com",
+    "root": "D:/Dropbox/Self-Development/Coding_Projects/TextSummarizer",
+    "host": "DESKTOP-TPJ6QND",
+    "username": "jinou",
+    "executable": "d:\\Dropbox\\Self-Development\\Coding_Projects\\TextSummarizer\\venv\\python.exe",
+    "cpu_count": 8,
+    "cpu_count_logical": 16,
+    "cpu_freq": {
+        "current": 3201.0,
+        "min": 0.0,
+        "max": 3201.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 3201.0,
+            "min": 0.0,
+            "max": 3201.0
+        }
+    ],
+    "disk": {
+        "total": 1863.0156211853027,
+        "used": 1602.0021171569824
+    },
+    "gpu": "NVIDIA GeForce RTX 3070 Laptop GPU",
+    "gpu_count": 1,
+    "gpu_devices": [
+        {
+            "name": "NVIDIA GeForce RTX 3070 Laptop GPU",
+            "memory_total": 8589934592
+        }
+    ],
+    "memory": {
+        "total": 31.855525970458984
+    }
+}

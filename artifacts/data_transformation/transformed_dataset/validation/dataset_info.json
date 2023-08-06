@@ -38,7 +38,7 @@
       },
       "_type": "Sequence"
     },
-    "label": {
+    "labels": {
       "feature": {
         "dtype": "int64",
         "_type": "Value"

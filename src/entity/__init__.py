@@ -25,3 +25,20 @@ class DataTransformationConfig:
     tokenizer_name: Path
     input_feature: str
     target_feature: str
+
+
+@dataclass(frozen=True)
+class ModelTrainerConfig:
+    root_dir: Path
+    data_path: Path
+    model_ckpt: Path
+    num_train_epochs: int
+    warmup_steps: int
+    per_device_train_batch_size: int
+    per_device_eval_batch_size: int
+    weight_decay: float
+    logging_steps: int
+    evaluation_strategy: str
+    eval_steps: int
+    save_steps: int
+    gradient_accumulation_steps: int
