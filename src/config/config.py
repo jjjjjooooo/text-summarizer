@@ -4,6 +4,7 @@ from src.utils.logger import logger
 from src.utils.utils import load_yaml, create_directories, get_size
 from src.entity import DataIngestionConfig
 from src.entity import DataValidationConfig
+from src.entity import DataTransformationConfig
 
 
 class ConfigurationManager:
@@ -40,3 +41,18 @@ class ConfigurationManager:
         )
 
         return data_validation_config
+
+    def get_data_transformation_config(self) -> DataTransformationConfig:
+        config = self.config["data_transformation"]
+
+        create_directories([config["root_dir"]])
+
+        data_transformation_config = DataTransformationConfig(
+            root_dir=config["root_dir"],
+            data_path=config["data_path"],
+            tokenizer_name=config["tokenizer_name"],
+            input_feature=config["input_feature"],
+            target_feature=config["target_feature"],
+        )
+
+        return data_transformation_config

@@ -10,12 +10,14 @@ data_validation:
   root_dir: artifacts/data_validation
   STATUS_FILE: artifacts/data_validation/status.txt
   ALL_REQUIRED_FILES: ["train", "test", "validation"]
-  UNZIPPED_FOLDER: "samsum_dataset"
+  UNZIPPED_FOLDER: samsum_dataset
 
 data_transformation:
   root_dir: artifacts/data_transformation
   data_path: artifacts/data_ingestion/samsum_dataset
   tokenizer_name: google/pegasus-cnn_dailymail
+  input_feature: dialogue
+  target_feature: summary
 
 model_trainer:
   root_dir: artifacts/model_trainer
