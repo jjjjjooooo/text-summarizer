@@ -41,7 +41,7 @@ Create App
 Deploy App
 
 
-## AWS-CICD-Deployment-with-Github-Actions
+## AWS CICD deployment with Github
 
 
 ### 1. Login to AWS console
