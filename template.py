@@ -6,7 +6,8 @@ logging.basicConfig(level=logging.INFO, format="[%(asctime)s]: %(message)s:")
 
 
 list_of_files = [
-    ".github/workflows/.gitkeep",
+    # ".github/workflows/.gitkeep",
+    ".github/workflows/main.yaml",
     f"src/__init__.py",
     f"src/components/__init__.py",
     f"src/utils/__init__.py",

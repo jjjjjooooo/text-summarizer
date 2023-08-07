@@ -27,6 +27,8 @@ model_trainer:
 model_evaluation:
   root_dir: artifacts/model_evaluation
   data_path: artifacts/data_transformation/transformed_dataset
-  model_path: artifacts/model_trainer/pegasus-samsum-model
+  model_path: artifacts/model_trainer/trained-model
   tokenizer_path: artifacts/model_trainer/tokenizer
   metric_file_name: artifacts/model_evaluation/metrics.csv
+  input_feature: dialogue
+  target_feature: summary

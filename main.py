@@ -2,6 +2,7 @@ from src.pipeline.stage_data_ingestion import DataIngestionTrainingPipeline
 from src.pipeline.stage_data_validation import DataValidationTrainingPipeline
 from src.pipeline.stage_data_transformation import DataTransformationTrainingPipeline
 from src.pipeline.stage_model_trainer import ModelTrainerTrainingPipeline
+from src.pipeline.stage_model_evaluation import ModelEvaluationTrainingPipeline
 from src.utils.logger import logger
 from src.utils.exception import CustomException
 import os
@@ -49,3 +50,15 @@ try:
 except Exception as e:
     logger.exception(e)
     raise CustomException(e, sys)
+
+"""
+STAGE_NAME = "Model Evaluation"
+try:
+    logger.info(f">>>>>> stage {STAGE_NAME} started <<<<<<<")
+    model_trainer = ModelEvaluationTrainingPipeline()
+    model_trainer.main()
+    logger.info(f">>>>>> stage {STAGE_NAME} completed <<<<<<<")
+except Exception as e:
+    logger.exception(e)
+    raise CustomException(e, sys)
+"""

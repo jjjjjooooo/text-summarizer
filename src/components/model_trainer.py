@@ -24,7 +24,7 @@ class ModelTrainer:
             device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
             # Move the model to the selected device (GPU)
-            model = AutoModelForSeq2SeqLM.from_pretrained(self.config.model_ckpt).to(device)
+            model = AutoModelForSeq2SeqLM.from_pretrained(self.config.model_ckpt)
             logger.info("Model initialized")
 
             data_collator = DataCollatorForSeq2Seq(tokenizer, model=model)
@@ -50,13 +50,13 @@ class ModelTrainer:
             )
 
             trainer = Trainer(
-                model=model,
+                model=model.to(device),
                 args=trainer_args,
                 tokenizer=tokenizer,
                 data_collator=data_collator,
                 train_dataset=dataset_transformed["train"],
                 eval_dataset=dataset_transformed["validation"],
-                callbacks=[EarlyStoppingCallback(early_stopping_patience=3, early_stopping_threshold=0.01)],
+                callbacks=[EarlyStoppingCallback(early_stopping_patience=3, early_stopping_threshold=0.001)],
             )
             logger.info("Trainer initialized")
 
