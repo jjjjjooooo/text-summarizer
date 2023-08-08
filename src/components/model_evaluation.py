@@ -81,7 +81,7 @@ class ModelEvaluation:
                 metric=rouge_metric,
                 model=trained_model,
                 tokenizer=tokenizer,
-                batch_size=50,
+                batch_size=1,
             )
             logger.info("Metrics calculated")
 
