@@ -49,8 +49,6 @@ class ModelEvaluation:
                     tokenizer.decode(s, skip_special_tokens=True, clean_up_tokenization_spaces=True) for s in summaries
                 ]
 
-                # decoded_summaries = [d.replace("", " ") for d in decoded_summaries]
-
                 metric.add_batch(predictions=decoded_summaries, references=target_batch)
 
             #  Finally compute and return the ROUGE scores.
@@ -85,7 +83,7 @@ class ModelEvaluation:
             )
             logger.info("Metrics calculated")
 
-            rouge_dict = dict((rn, score[rn].mid.fmeasure) for rn in rouge_names)
+            rouge_dict = {rn: score[rn].mid.fmeasure for rn in rouge_names}
 
             df = pd.DataFrame(rouge_dict, index=["text_summarizer"])
             df.to_csv(self.config.metric_file_name, index=False)

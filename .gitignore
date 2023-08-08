@@ -162,4 +162,4 @@ cython_debug/
 .history/
 
 wandb/
-artifacts/
+artifacts/model_trainer/
