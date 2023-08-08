@@ -9,36 +9,36 @@ The "End-to-End Text Summarization Project" is a comprehensive initiative focuse
 
 ## Workflow of the project
 
-Create all the needed files and folders using template.py
-Create a new virtual environment
-Install packages using requirements.txt
-Set up project using setup.py (automatically configured)
+* Create all the needed files and folders using template.py
+* Create a new virtual environment
+* Install packages using requirements.txt
+* Set up project using setup.py (automatically configured)
 
-Update src/constants/__init__.py
-Update src/utils/logger.py
-Update src/utils/exception.py
-Update src/utils/utils.py
+* Update src/constants/__init__.py
+* Update src/utils/logger.py
+* Update src/utils/exception.py
+* Update src/utils/utils.py
 
-Test project code using notebook
+* Test project code using notebook
 
-for each component in components:
+* for each component in components:
 
-    1. Test component code using notebook
-    2. Update config.yaml
-    3. Update params.yaml
-    4. Update entity/__init__.py
-    5. Update src/config/config.py
-    6. Update src/components/component.py
-    7. Update src/pipeline/stage_component.py
-    8. Update main.py
+	1. Test component code using notebook
+	2. Update config.yaml
+	3. Update params.yaml
+	4. Update entity/__init__.py
+	5. Update src/config/config.py
+	6. Update src/components/component.py
+	7. Update src/pipeline/stage_component.py
+	8. Update main.py
 
-Update src/pipeline/prediction.py
-Update app.py
-Update Dockerfile
-Update .github/workflows/main.yaml
+* Update src/pipeline/prediction.py
+* Update app.py
+* Update Dockerfile
+* Update .github/workflows/main.yaml
 
-Create App
-Deploy App
+* Create App
+* Deploy App
 
 
 ## AWS CICD deployment with Github
@@ -50,9 +50,8 @@ Deploy App
 
 * Create a new user with the following policies:
 
-    1. AmazonEC2ContainerRegistryFullAccess
-
-    2. AmazonEC2FullAccess
+	1. AmazonEC2ContainerRegistryFullAccess
+	2. AmazonEC2FullAccess
 
 * Create and save the security credentials
 
@@ -65,21 +64,15 @@ Deploy App
 
 ### 5. Open EC2 and install docker in EC2 virtual Machine:
 	
-optinal
+* optinal
+	* sudo apt-get update -y
+	* sudo apt-get upgrade
 
-* sudo apt-get update -y
-
-* sudo apt-get upgrade
-
-required
-
-* curl -fsSL https://get.docker.com -o get-docker.sh
-
-* sudo sh get-docker.sh
-
-* sudo usermod -aG docker ubuntu
-
-* newgrp docker
+* required
+	* curl -fsSL https://get.docker.com -o get-docker.sh
+	* sudo sh get-docker.sh
+	* sudo usermod -aG docker ubuntu
+	* newgrp docker
 	
 ### 6. Configure EC2 as self-hosted runner:
 
@@ -90,11 +83,10 @@ required
 ### 7. Setup github secrets
 
 * github> setting> secrets and variables> actions> new repository secret> create the following parameters
-
-    AWS_ACCESS_KEY_ID
-    AWS_SECRET_ACCESS_KEY
-    AWS_REGION
-    AWS_ECR_LOGIN_URI
-    ECR_REPOSITORY_NAME
+	* AWS_ACCESS_KEY_ID
+	* AWS_SECRET_ACCESS_KEY
+	* AWS_REGION
+	* AWS_ECR_LOGIN_URI
+	* ECR_REPOSITORY_NAME
 
 ### 8. Add the correct port to EC2
