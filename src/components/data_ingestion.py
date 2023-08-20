@@ -2,7 +2,7 @@ import os
 import sys
 import urllib.request as request
 import zipfile
-from src.config.config import DataIngestionConfig
+from src.entity import DataIngestionConfig
 from src.utils.exception import CustomException
 from src.utils.logger import logger
 from src.utils.utils import get_size
