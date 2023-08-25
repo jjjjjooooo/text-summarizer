@@ -160,6 +160,7 @@ cython_debug/
 #.idea/
 
 .history/
+.vscode/
 
 wandb/
 artifacts/model_trainer/
