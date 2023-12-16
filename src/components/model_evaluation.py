@@ -22,16 +22,28 @@ class ModelEvaluation:
         except Exception as e:
             raise CustomException(e, sys)
 
-    def calculate_metric_on_test_ds(self, dataset, metric, model, tokenizer, batch_size=16):
+    def calculate_metric_on_test_ds(
+        self, dataset, metric, model, tokenizer, batch_size=16
+    ):
         try:
             device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
             model = model.to(device)
-            article_batches = list(self.batch_iterator(dataset[self.config.input_feature], batch_size))
-            target_batches = list(self.batch_iterator(dataset[self.config.target_feature], batch_size))
+            article_batches = self.batch_iterator(
+                dataset[self.config.input_feature], batch_size
+            )
+            target_batches = self.batch_iterator(
+                dataset[self.config.target_feature], batch_size
+            )
 
-            for article_batch, target_batch in tqdm(zip(article_batches, target_batches), total=len(article_batches)):
+            for article_batch, target_batch in tqdm(
+                zip(article_batches, target_batches), total=len(article_batches)
+            ):
                 inputs = tokenizer(
-                    article_batch, max_length=1024, truncation=True, padding="max_length", return_tensors="pt"
+                    article_batch,
+                    max_length=1024,
+                    truncation=True,
+                    padding="max_length",
+                    return_tensors="pt",
                 )
 
                 summaries = model.generate(
@@ -46,7 +58,10 @@ class ModelEvaluation:
                 # Finally, we decode the generated texts,
                 # replace the  token, and add the decoded texts with the references to the metric.
                 decoded_summaries = [
-                    tokenizer.decode(s, skip_special_tokens=True, clean_up_tokenization_spaces=True) for s in summaries
+                    tokenizer.decode(
+                        s, skip_special_tokens=True, clean_up_tokenization_spaces=True
+                    )
+                    for s in summaries
                 ]
 
                 metric.add_batch(predictions=decoded_summaries, references=target_batch)
@@ -62,7 +77,9 @@ class ModelEvaluation:
         try:
             tokenizer = AutoTokenizer.from_pretrained(self.config.tokenizer_path)
             logger.info("Tokenizer loaded")
-            trained_model = AutoModelForSeq2SeqLM.from_pretrained(self.config.model_path)
+            trained_model = AutoModelForSeq2SeqLM.from_pretrained(
+                self.config.model_path
+            )
             logger.info("Model loaded")
 
             # loading data
